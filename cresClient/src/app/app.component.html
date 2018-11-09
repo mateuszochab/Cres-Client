@@ -1,0 +1,15 @@
+<div class="container">
+    <div *ngIf="isLogged(); then log; else nolog">
+    <ng-template #log>
+           
+    </ng-template>
+
+    <ng-template #nolog>
+             
+            
+    </ng-template>
+    </div>
+    <app-navigation></app-navigation>
+    <router-outlet></router-outlet>
+    
+</div>
