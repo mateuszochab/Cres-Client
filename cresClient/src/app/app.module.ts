@@ -14,6 +14,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AppInterceptor } from './service_shared/app-interceptor';
 import { LoggedHomeComponent } from './logged-home/logged-home.component';
+import { JwtModule } from '@auth0/angular-jwt';
 const appRoutes: Routes = [
   {
     path: 'index',
@@ -46,6 +47,10 @@ const appRoutes: Routes = [
   }
 ];
 
+export function tokenGetter() {
+  return localStorage.getItem('currentUser');
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,13 +67,19 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes, {enableTracing: true})
+    RouterModule.forRoot(appRoutes, {enableTracing: true}),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:8765'],
+        blacklistedRoutes: ['localhost:8765/auth/']
+      }
+    })
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AppInterceptor,
-    multi: true
-   }],
+  providers: [],
+    // provide: HTTP_INTERCEPTORS,
+    // useClass: AppInterceptor,
+    // multi: true
   bootstrap: [AppComponent]
 })
 export class AppModule { }
