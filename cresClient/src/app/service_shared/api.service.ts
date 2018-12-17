@@ -11,6 +11,7 @@ export class ApiService {
   private AUTHORIZATION_URL = 'http://localhost:8765/auth/';
   private LOGGED_HOME = 'http://localhost:8765/feedback/';
   private head = new HttpHeaders({'Content-Type': 'application/json'});
+
   constructor(private http: HttpClient) {
 
    }

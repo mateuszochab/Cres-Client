@@ -9,18 +9,4 @@ export class AppComponent {
   title = 'cresClient';
 
 
-
-isLogged(): boolean {
-
-  if (localStorage.getItem('currentUser')) {
-    return true;
-  } else {
-    return false;
-  }
-
-
-}
-
-
-
 }

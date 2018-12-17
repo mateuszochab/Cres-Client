@@ -38,7 +38,7 @@ const appRoutes: Routes = [
   },
   {
     path: '',
-    component: NotesComponent,
+    component: LoginComponent,
     pathMatch: 'full'
   },
   {

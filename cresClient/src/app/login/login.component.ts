@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
       const token = resp.headers.get('Authorization');
       if (token) {
         localStorage.setItem('currentUser', JSON.stringify({email: this.model.email, token: token}));
+        location.reload();
         this.router.navigate(['feedback']);
       } else {
         location.reload();
